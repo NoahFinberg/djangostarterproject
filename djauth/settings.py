@@ -37,6 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # custom apps
+    'user',
+
+    # alluth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +127,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+SITE_ID = 1
+
+# allout login settings
+LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/home/'
+AUTH_USER_MODEL = 'user.UserModel'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
