@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,23 +22,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1k*q0at6*v!-e4%6tv!u)0aeaoh+b+*j2h$2218-25=d6j(w=-'
+SECRET_KEY = os.getenv('SECRET_KEY', 'q#br=ggq_)j+c@2zrvr0hpxl+0di(@!l!#3u7gem-dgs0nw#l4')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.getenv('DEBUG', 0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_rq',
+    'debug_toolbar',
 
     # custom apps
     'user',
@@ -51,12 +55,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'djauth.urls'
@@ -84,14 +90,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'djauth.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+# Configure database using DJ-Database-URL.
+# See docs at https://github.com/jacobian/dj-database-url#dj-database-url.
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # If DATABASE_URL environment variable isn't set, use Docker Compose Postgres database.
+    'default': dj_database_url.config(
+        default='postgres://postgres:postgres@db:5432/djauth',
+        conn_max_age=600,
+    )
 }
 
 
@@ -132,7 +139,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/staticfiles/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Enable WhiteNoise compression and caching support.
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/mediafiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/mediafiles')
@@ -151,3 +161,30 @@ LOGIN_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'user.UserModel'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_LOGOUT_ON_GET = True
+
+
+
+# Configure Redis cache and Django-RQ.
+
+# https://django-redis-cache.readthedocs.io/en/latest/intro_quick_start.html#quick-start
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        # By default use Docker Compose Redis instance.
+        'LOCATION': os.getenv('REDIS_URL', 'redis:6379'),
+    },
+}
+
+# https://github.com/rq/django-rq#support-for-django-redis-and-django-redis-cache
+RQ_QUEUES = {
+    'default': {
+        'USE_REDIS_CACHE': 'default',
+        'DEFAULT_TIMEOUT': 360,
+    },
+}
+RQ_SHOW_ADMIN_LINK = True
+
+# Show Debug Toolbar if DEBUG is True.
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+}
