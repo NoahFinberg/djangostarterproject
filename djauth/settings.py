@@ -65,7 +65,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'user', 'templates')
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'accounts'),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -148,3 +150,4 @@ LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/home/'
 AUTH_USER_MODEL = 'user.UserModel'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_LOGOUT_ON_GET = True
