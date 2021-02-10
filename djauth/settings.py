@@ -147,7 +147,7 @@ SITE_ID = 1
 
 # allout login settings
 LOGIN_URL = '/accounts/login'
-LOGIN_REDIRECT_URL = '/home/'
+LOGIN_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'user.UserModel'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_LOGOUT_ON_GET = True
