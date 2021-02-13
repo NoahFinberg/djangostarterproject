@@ -24,7 +24,7 @@ As a prerequisite please make sure you have the following tools already installe
 ## Setup in under 5 minutes!
 1. Clone this repo
 ```sh
-$ git clone
+$ git clone git@github.com:NoahFinberg/djangostarterproject.git
 ```
 2. Build the Docker Container
 ```sh
