@@ -88,9 +88,9 @@ I'll also try to build a bunch of basic starter projects like this one, but with
 I welcome contributors to this project and future series of starter projects. I think helping other developers through this project has the potential to have a huge impact by saving countless development hours. If you'd like to contribute, please fork this project, make a new branch, and make a merge request.
 
 ### Todos
- - Refactor Templates for additional modularity
  - Sign in and Sign up validation and error messages
- - Basic Homepage Functionality (TBD)
+ - Basic Homepage Functionality (TBD) - Secret Key Generation
+ - Style all other allauth template pages located in `templates/account/` using the Boostrap Template. Currenlty only login, logout, and reset password are styled.
 
 ## Authors and Contributors
 Noah Finberg and Jamie Gullbrand
