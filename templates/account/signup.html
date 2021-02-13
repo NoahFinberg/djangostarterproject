@@ -41,6 +41,16 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
+
+                            {% if form.errors.items %}
+                                <div class="alert alert-danger" role="alert">
+                                    {% for key, value in form.errors.items %}
+                                        {% if key != '__all__' %}{{ key }} {% endif %}{{ value }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+
                             <form class="user" id="signup_form" method="post" action="{% url 'account_signup' %}">
                                 {% csrf_token %}
                                 <div class="form-group">

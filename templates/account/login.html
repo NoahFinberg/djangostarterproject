@@ -48,6 +48,15 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
+
+                                    {% if form.errors.items %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {% for key, value in form.errors.items %}
+                                                {% if key != '__all__' %}{{ key }} {% endif %}{{ value }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+
                                     <form class="user" method="POST" action="{% url 'account_login' %}">
                                         {% csrf_token %}    
                                         <div class="form-group">
