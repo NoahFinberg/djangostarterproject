@@ -90,7 +90,7 @@ I welcome contributors to this project and future series of starter projects. I 
 ### Todos
  - Refactor Templates for additional modularity
  - Sign in and Sign up validation and error messages
- - CSV upload for background worker example
+ - Basic Homepage Functionality (TBD)
 
 ## Authors and Contributors
 Noah Finberg and Jamie Gullbrand
