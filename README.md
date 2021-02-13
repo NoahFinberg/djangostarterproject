@@ -1,4 +1,4 @@
-# Django Starter Project - Allauth, Postgres, Redis, RqWorker
+# Django Starter Project
 
 Most webapps have a common initial configuration -- and there is no reason to spend hours doing the exact same config over and over for each new project. This is the first in a series of starter Django projects that follow common starting app patterns.
 
