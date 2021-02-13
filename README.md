@@ -67,17 +67,18 @@ This app just generates a secret key when you press a button on the homepage aft
 ## Screenshots
 Here is what your app should look like when you visit `localhost:8000` or your live app on Heroku.
 
-You can 
+With this starter app you can:
 
-1. create an account.
+1. Create an account.
 ![Sign Up](screenshots/signup.png)
 
-2. login to an existing account if you've already created one.
+2. Login to an existing account if you've already created one.
 ![Login](screenshots/login.png)
 
-3. repurpose the dashboard homepage
+3. Repurpose the dashboard homepage. Note: secret key generation functionality implemented here (good example of how to use background jobs).
 ![Homepage](screenshots/homepage.png)
 
+4. You can also logout by clicking on your username in the top right corner and selecting the "Logout" item.
 
 ## Acknowledgements
 I combined a few great tutorials to setup this starter app:
