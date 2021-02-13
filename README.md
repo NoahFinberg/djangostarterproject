@@ -38,7 +38,7 @@ You should see all the resources including the web server startup in your termin
 $ cd djangostarterproject
 $ docker-compose exec web python manage.py migrate
 ```
-Now refresh localhost:8000. That should be enough for you to run the starter project locally. Seriously, that's it! One thing to note is if you change some settings in the Dockerfile or docker-compose.yml files, you'll need to rebuild the docker container.
+Now refresh `localhost:8000`. That should be enough for you to run the starter project locally. Seriously, that's it! One thing to note is if you change some settings in the Dockerfile or docker-compose.yml files, you'll need to rebuild the docker container.
 
 If you'd like to deploy your project to Heroku, that's also pretty simple now. Just use the following commands:
 ```sh
@@ -59,14 +59,19 @@ heroku open
 ```
 Congrats! You now have a pretty great starting point for your Django project.
 
+## Background Worker Demo
+To demonstrate how to implement background worker functionality to our project, I've created a very basic SECRET KEY GENERATOR app inspired by [jbarham's Django Docker Heroku Tutorial](https://github.com/jbarham/django-docker-heroku-tutorial). 
+
+This app just generates a secret key when you press a button on the homepage after logging in. If you don't want this functionality, you can just remove the app from the project and its associated references in the root project directory. This is purely to provide an easy to adapt example for using Redis and RqWorker for background jobs. If you don't plan to use any background job functionality in your project, you can remove the redis and worker services from the `docker-compose.yml` file as well as the associated dependencies located in `requirements.txt` and rebuild the Docker container.
+
 ## Screenshots
-Here is what your app should look like when you visit localhost:8000 or your live app on Heroku.
+Here is what your app should look like when you visit `localhost:8000` or your live app on Heroku.
 
 
 ## Acknowledgements
-I followed a few great tutorials to get this all set up:
-- The Beginners Guide to Django User Management and User Authentication...
-- Integrating Bootstrap to Django
+I combined a few great tutorials to setup this starter app:
+- [The Beginners Guide To Django User Management and User Authentication Using AllAuth](https://medium.com/python-in-plain-english/django-allauth-user-registration-login-and-logout-features-402ad1649e76) by Vikas Gautam
+- [Integrating Bootstrap to Django](https://medium.com/analytics-vidhya/integrating-bootstrap-to-django-2d84344058ff) by D Khambu
 - [Django Docker Heroku Tutorial](https://github.com/jbarham/django-docker-heroku-tutorial)
 
 To get up to speed with Django, I'd also recommend checking out the following tutorials that I used to get up to speed myself:

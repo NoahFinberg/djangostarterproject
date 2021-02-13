@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # custom apps
     'user',
+    'keygen',
 
     # alluth
     'django.contrib.sites',
