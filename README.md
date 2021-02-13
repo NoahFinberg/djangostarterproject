@@ -93,4 +93,4 @@ I welcome contributors to this project and future series of starter projects. I 
  - CSV upload for background worker example
 
 ## Authors and Contributors
-Noah Finberg
+Noah Finberg and Jamie Gullbrand
