@@ -84,7 +84,7 @@ With this starter app you can:
 I combined a few great tutorials to setup this starter app:
 - [The Beginners Guide To Django User Management and User Authentication Using AllAuth](https://medium.com/python-in-plain-english/django-allauth-user-registration-login-and-logout-features-402ad1649e76) by Vikas Gautam
 - [Integrating Bootstrap to Django](https://medium.com/analytics-vidhya/integrating-bootstrap-to-django-2d84344058ff) by D Khambu
-- [Django Docker Heroku Tutorial](https://github.com/jbarham/django-docker-heroku-tutorial)
+- [Django Docker Heroku Tutorial](https://github.com/jbarham/django-docker-heroku-tutorial) by jbarham
 
 To get up to speed with Django, I'd also recommend checking out the following tutorials that I used to get up to speed myself:
 - [Python Django - Build a Web App in 60 minutes: Blog Application](https://www.youtube.com/watch?v=FinjKyFEAO4&t=910s) by Jamie Gullbrand
