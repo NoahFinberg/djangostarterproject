@@ -28,14 +28,15 @@ $ git clone
 ```
 2. Build the Docker Container
 ```sh
-$ cd django-starter-project
+$ cd djangostarterproject
 $ docker-compose up --build
 ```
 You should see all the resources including the web server startup in your terminal. Now, open up another terminal window in the same directory.
 
 3. Populate Postgres DB
 ```sh
-docker-compose exec web python manage.py migrate
+$ cd djangostarterproject
+$ docker-compose exec web python manage.py migrate
 ```
 Now refresh localhost:8000. That should be enough for you to run the starter project locally. Seriously, that's it! One thing to note is if you change some settings in the Dockerfile or docker-compose.yml files, you'll need to rebuild the docker container.
 
@@ -88,6 +89,7 @@ I welcome contributors to this project and future series of starter projects. I 
 
 ### Todos
  - Refactor Templates for additional modularity
+ - Sign in and Sign up validation and error messages
 
 ## Authors and Contributors
 Noah Finberg
