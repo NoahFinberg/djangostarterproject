@@ -4,7 +4,7 @@ Most webapps have a common initial configuration -- and there is no reason to sp
 
 Following this repo will enable you to setup a standard development environment, webapp, and deploy to Heroku in less than 5 minutes and with fewer than ten lines of code (seriously) -- thank you Docker.
 ## Resources
-This starter app leverages the following resources, but you don't need to worry about installing and configuring most of these. Just see prequisites below for what you need on your machine to make this work:
+This starter app leverages the following resources, but you don't need to worry about installing and configuring most of these. Just see prerequisites below for what you need on your machine to make this work:
 
   - [Docker](https://www.docker.com/) - for virtual development environment and easy deployment
   - [Allauth](https://github.com/pennersr/django-allauth) - for user authentication
