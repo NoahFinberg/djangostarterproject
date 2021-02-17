@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
+from user.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('django-rq/', include('django_rq.urls')),
-    path('', include('keygen.urls')),
+    path('', index),
 ]
 
 if settings.DEBUG:

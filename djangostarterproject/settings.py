@@ -40,12 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_rq',
     'debug_toolbar',
 
     # custom apps
     'user',
-    'keygen',
 
     # alluth
     'django.contrib.sites',
@@ -161,28 +159,6 @@ LOGIN_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'user.UserModel'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_LOGOUT_ON_GET = True
-
-
-
-# Configure Redis cache and Django-RQ.
-
-# https://django-redis-cache.readthedocs.io/en/latest/intro_quick_start.html#quick-start
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        # By default use Docker Compose Redis instance.
-        'LOCATION': os.getenv('REDIS_URL', 'redis:6379'),
-    },
-}
-
-# https://github.com/rq/django-rq#support-for-django-redis-and-django-redis-cache
-RQ_QUEUES = {
-    'default': {
-        'USE_REDIS_CACHE': 'default',
-        'DEFAULT_TIMEOUT': 360,
-    },
-}
-RQ_SHOW_ADMIN_LINK = True
 
 # Show Debug Toolbar if DEBUG is True.
 DEBUG_TOOLBAR_CONFIG = {

@@ -6,44 +6,9 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Secret Key Generator & Sample Dashboard</h1>
+        <h1 class="h3 mb-0 text-gray-800">Sample Dashboard</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-    </div>
-
-    <!-- Content Row -->
-    <div class="row">
-
-        <div class="col-lg-12 mb-4">
-
-            <!-- Secret Key Generator Background Worker Example -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Secret Key Generator: Background Job Example</h6>
-                </div>
-                <div class="card-body">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <p{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</p>
-                        {% endfor %}
-                    {% endif %}
-                    {% if secrets %}
-                        <ol>
-                            {% for key in secrets %}
-                                <li><code>{{ key }}</code></li>
-                            {% endfor %}
-                        </ol>
-                    {% else %}
-                        <p class="alert alert-info">No secret keys.</p>
-                    {% endif %}
-                    <a href="{% url 'generate' %}" class="btn btn-primary">Generate New Key</a>
-                    <a href="{% url 'generate' %}?bg=1" class="btn btn-primary">Generate New Key in Background</a>
-                    {% if secrets %}
-                        <a href="{% url 'delete' %}" class="btn btn-primary">Delete All Keys</a>
-                    {% endif %}      
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Content Row -->
