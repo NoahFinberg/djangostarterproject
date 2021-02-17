@@ -9,8 +9,6 @@ This starter app leverages the following resources, but you don't need to worry 
   - [Docker](https://www.docker.com/) - for virtual development environment and easy deployment
   - [Allauth](https://github.com/pennersr/django-allauth) - for user authentication
   - [Psycogpg](https://github.com/psycopg/psycopg2) - python client for postgres db
-  - [django-redis-cache](https://github.com/sebleier/django-redis-cache#readme) - A Redis cache backend to store background jobs
-  - [django-rq](https://github.com/rq/django-rq) - for managing Redis background jobs
   - [sbadmin2](https://startbootstrap.com/theme/sb-admin-2) - A Free Bootstrap Template from [Start Bootstrap](https://startbootstrap.com/).
   - [Heroku](http://www.heroku.com/) - for very easy production deployment.
 
@@ -46,8 +44,6 @@ If you'd like to deploy your project to Heroku, that's also pretty simple now. J
 heroku create 
 # creates new postgres db
 heroku addons:create heroku-postgresql:hobby-dev 
-# creates redis cache
-heroku addons:create heroku-redis:hobby-dev
 
 # sets the SECRET KEY in production. You'll need to generate one.
 heroku config:set SECRET_KEY='replace me with a generated secret key'
@@ -58,11 +54,6 @@ heroku ps:scale worker=1
 heroku open
 ```
 Congrats! You now have a pretty great starting point for your Django project.
-
-## Background Worker Demo
-To demonstrate how to implement background worker functionality to our project, I've created a very basic SECRET KEY GENERATOR app inspired by [jbarham's Django Docker Heroku Tutorial](https://github.com/jbarham/django-docker-heroku-tutorial). 
-
-This app just generates a secret key when you press a button on the homepage after logging in. If you don't want this functionality, you can just remove the app from the project and its associated references in the root project directory. This is purely to provide an easy to adapt example for using Redis and RqWorker for background jobs. If you don't plan to use any background job functionality in your project, you can remove the redis and worker services from the `docker-compose.yml` file as well as the associated dependencies located in `requirements.txt` and rebuild the Docker container.
 
 ## Screenshots
 Here is what your app should look like when you visit `localhost:8000` or your live app on Heroku.
@@ -75,7 +66,7 @@ With this starter app you can:
 2. Login to an existing account if you've already created one.
 ![Login](screenshots/login.png)
 
-3. Repurpose the dashboard homepage. Note: secret key generation functionality implemented here (good example of how to use background jobs).
+3. Repurpose the dashboard homepage.
 ![Homepage](screenshots/homepage.png)
 
 4. You can also logout by clicking on your username in the top right corner and selecting the "Logout" item.
