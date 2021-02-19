@@ -18,6 +18,16 @@ As a prerequisite please make sure you have the following tools already installe
 2. [Docker](https://docs.docker.com/get-docker/)
 3. [Docker Compose](https://docs.docker.com/compose/install/)
 4. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) - Note: you'll need to create a Heroku account and there may be a cost associated with the servers you use.
+5. [VirtualEnv](https://docs.python.org/3/tutorial/venv.html)
+```sh
+$ python3 -m virtualenv DjangoInMinutesStarterProject
+$ source DjangoInMinutesStarterProject/bin/activate
+```
+6. [Github](https://github.com/) - setting up a new repo (also needed for deploying to Heroku)
+```sh
+git remote set-url origin <remote>
+git push origin main
+```
 
 ## Setup in under 5 minutes!
 1. Clone this repo
@@ -45,12 +55,11 @@ heroku create
 # creates new postgres db
 heroku addons:create heroku-postgresql:hobby-dev 
 
-# sets the SECRET KEY in production. You'll need to generate one.
+# sets the SECRET KEY in production. You'll need to generate one. You can use - [https://djecrety.ir/](https://djecrety.ir/) or [https://miniwebtool.com/django-secret-key-generator/](https://miniwebtool.com/django-secret-key-generator/) if you'd like.
 heroku config:set SECRET_KEY='replace me with a generated secret key'
 
 # deploy to Heroku
-git push heroku master
-heroku ps:scale worker=1
+git push heroku main
 heroku open
 ```
 Congrats! You now have a pretty great starting point for your Django project.
@@ -70,6 +79,19 @@ With this starter app you can:
 ![Homepage](screenshots/homepage.png)
 
 4. You can also logout by clicking on your username in the top right corner and selecting the "Logout" item.
+
+## Helpful Docker + Django Commands ##
+```sh
+# start docker container
+docker-compose up
+# generate db migrations
+docker-compose exec web python manage.py makemigrations
+# run db migrations
+docker-compose exec web python manage.py migrate
+
+# start new app
+
+```
 
 ## Acknowledgements
 I combined a few great tutorials to setup this starter app:
