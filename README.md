@@ -23,17 +23,19 @@ As a prerequisite please make sure you have the following tools already installe
 $ python3 -m virtualenv DjangoInMinutesStarterProject
 $ source DjangoInMinutesStarterProject/bin/activate
 ```
-6. [Github](https://github.com/) - setting up a new repo (also needed for deploying to Heroku)
-```sh
-git remote set-url origin <remote>
-git push origin main
-```
 
 ## Setup in under 5 minutes!
 1. Clone this repo
 ```sh
 $ git clone git@github.com:NoahFinberg/djangostarterproject.git
 ```
+
+[Github](https://github.com/) - You want to set up a new Github repo for this code so you can make changes for your own project. (also needed for deploying to Heroku)
+```sh
+git remote set-url origin <remote> # remote is git url to your repo.
+git push origin main
+```
+
 2. Build the Docker Container
 ```sh
 $ cd djangostarterproject
@@ -82,14 +84,22 @@ With this starter app you can:
 
 ## Helpful Docker + Django Commands ##
 ```sh
+# rebuild docker container
+docker build .
 # start docker container
 docker-compose up
+# shutdown docker-container
+docker-compose down
+
+
 # generate db migrations
 docker-compose exec web python manage.py makemigrations
 # run db migrations
 docker-compose exec web python manage.py migrate
-
 # start new app
+docker-compose exec web python manage.py startapp <app name>
+# shell into docker container
+docker-compose exec web python manage.py shell
 
 ```
 
