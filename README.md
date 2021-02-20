@@ -4,7 +4,7 @@ Most webapps have a common initial configuration -- and there is no reason to sp
 
 Following this repo will enable you to setup a standard development environment, webapp, and deploy to Heroku in less than 5 minutes and with fewer than ten lines of code (seriously) -- thank you Docker.
 
-Feel free to follow along with this [Youtube video](https://www.youtube.com/watch?v=4seIp_kaaWM), where I walk through the below setup. If you find this repo helpful, please give it a star and/or like the Youtube video and subscribe to our Django in Minutes channel. We'll be building many more starter apps. Thanks so much!
+Feel free to follow along with this [Youtube video](https://www.youtube.com/watch?v=4seIp_kaaWM), where I walk through the below setup. If you find this repo helpful, please give it a star and/or like the Youtube video and subscribe to our [Django in Minutes](https://www.youtube.com/channel/UCeXWf8ttB2Q8-xTmEoTDkZg) channel. We'll be building many more starter apps. Thanks so much!
 
 ## Resources
 This starter app leverages the following resources, but you don't need to worry about installing and configuring most of these. Just see prerequisites below for what you need on your machine to make this work:
